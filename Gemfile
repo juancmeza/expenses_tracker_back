@@ -27,11 +27,18 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+group :development, :production do
+  gem 'pg', '~> 1.1'
+end
+group :test do
+  gem 'sqlite3', '~> 1.4'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'sqlite3', '~> 1.4'
-
+  # gem 'sqlite3', '~> 1.4'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -54,7 +61,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
   gem 'activerecord-postgresql-adapter'
 end
 
@@ -64,5 +71,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'active_model_serializers', '~> 0.10.2'
 
 gem 'rack-cors'
-
-
