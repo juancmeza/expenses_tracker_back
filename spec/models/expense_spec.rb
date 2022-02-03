@@ -1,14 +1,14 @@
 require 'rails_helper'
+require 'date'
 
 RSpec.describe Expense, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
   describe 'Test Expense Model' do
 
     test_user = User.new(name: 'TestUser')
-    test_user_id = User.find_by(name: 'TestUser').id
 
     it 'is valid with all valid attributes present' do
-      expect()
+      expect(Expense.new(amount: 10.0, date: Date.today, description: 'TestExp', category_id: 1))
     end
 
     it 'is not valid without an amount' do
