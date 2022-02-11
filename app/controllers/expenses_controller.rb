@@ -27,7 +27,7 @@ class ExpensesController < ApplicationController
 
     def create
       expense = Expense.create(amount: params[:amount], date: params[:date], description: params[:description], user_id: params[:userId], category_id: params[:categoryId])
-      if expense
+      if expense.valid?
         render json: expense
       else
         render json: {error: 'You must select a category and provide a name, amount, and date'}
@@ -37,7 +37,7 @@ class ExpensesController < ApplicationController
     def destroy
       expense = Expense.find_by(id: params[:id])
       expense.destroy
-      render json: {"Message": "Expense was deleted"}
+      render json: {message: "Expense was deleted"}
     end
 
   end
